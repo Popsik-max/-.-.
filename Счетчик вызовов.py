@@ -10,21 +10,23 @@ def string_info(string):
 
 def is_contains (string, list_to_search):
     count_call()
-    if string.lower() in list_to_search:
-        print('Элемент есть в списке:', True)
+    for i in list_to_search:
+        if string.lower() == i.lower():
+            result = True
+            break
+        elif string.lower() != i.lower():
+            result = False
+            continue
 
-    else:
-        print('Элемента нет в списке:', False)
-list_to_search = ['Popsik', 'Pupsik', 'poPIK']
-list_lower = [word.lower() for word in list_to_search ]
+    return result
+
 
 
 print(string_info('Университет Урбан'))
 print(string_info('Чем дальше, тем сложнее учиться :(, много приходится пользоваться Гуглом '))
-(is_contains('popsik', list_lower))
-(is_contains('ALMAZ', list_lower))
+print(is_contains('popsik', ['Pupsik', 'Popsik', 'popik'] ))
+print(is_contains('AL', ['Popsik', 'Pupsik', 'popik'] ))
 print(calls)
-
 
 
 
