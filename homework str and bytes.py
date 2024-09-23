@@ -1,18 +1,19 @@
-from pprint import pprint
 class Shop():
     def __init__(self,__file_name = 'products.txt'):
         self.__file_name = 'products.txt'
 
     def get_products(self):
         file = open(self.__file_name,'r')
-        return pprint(file.read())
+        info = file.read()   # с помощью этой переменной мы получаем актуальный список в файл нейм, т.е. продакт txt
         file.close()
+        return  info
 
 
     def add(self,*products):
         self.products = products
+        cur_info = self.get_products()  # в переменной запускается метод и из него мы получаем список текущий продуктов в магазине
         for i in self.products:
-            if i.name in self.__file_name:
+            if i.name in cur_info:
                 print(f'Продукт {i} уже есть в магазине')
             else:
                 file1 = open(self.__file_name, 'a')
@@ -35,4 +36,6 @@ p3 = Product('Potato', 5.5, 'Vegetables')
 
 print(p2.__str__())
 s1.add(p1, p2, p3)
+print(s1.get_products())
+
 print(s1.get_products())
