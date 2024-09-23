@@ -10,15 +10,15 @@ class Shop():
 
 
     def add(self,*products):
-        self.products = products
-        cur_info = self.get_products()  # в переменной запускается метод и из него мы получаем список текущий продуктов в магазине
-        for i in self.products:
+        cur_info = self.get_products()
+        file1 = open(self.__file_name, 'a')
+        for i in products:
             if i.name in cur_info:
                 print(f'Продукт {i} уже есть в магазине')
             else:
-                file1 = open(self.__file_name, 'a')
+
                 file1.write(f'{i}\n')
-                file1.close()
+        file1.close()
 
 class Product():
     def __init__(self, name,weight,category):
@@ -38,4 +38,3 @@ print(p2.__str__())
 s1.add(p1, p2, p3)
 print(s1.get_products())
 
-print(s1.get_products())
